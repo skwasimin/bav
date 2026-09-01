@@ -1,14 +1,17 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Batikar Abhedananda Vidyapith</title>
+    <!-- HOW TO ADD FAVICON: Just ensure your logo image is named 'favicon.png' and is in the same folder as this file -->
     <link rel="icon" type="image/png" href="favicon.png">
     
     <style>
-        /* Deep, Academic, Clean Design Variables */
+        /* =========================================================
+        CORE VARIABLES (Change these to alter the whole site)
+        ========================================================= 
+        */
         :root {
             --saffron-deep: #B83A14; 
             --saffron-hover: #8A2B0E;
@@ -17,14 +20,16 @@
             --white: #ffffff;
             --border-soft: #E5E0D8;
             --text-muted: #596A7A;
+            --shadow-soft: 0 10px 40px rgba(0,0,0,0.03);
+            --shadow-hover: 0 15px 30px rgba(0,0,0,0.06);
             --transition-slow: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
+        /* RESET & BASE TYPOGRAPHY */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Georgia', 'Times New Roman', serif;
         }
 
         body {
@@ -37,7 +42,20 @@
             font-family: 'Segoe UI', system-ui, sans-serif;
         }
 
-        /* Top Bar */
+        h1, h2, h3, h4 {
+            font-family: 'Georgia', serif;
+            color: var(--academic-dark);
+            font-weight: normal;
+        }
+
+        p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            color: var(--text-muted);
+        }
+
+        /* TOP BAR */
         .top-bar {
             background-color: var(--white);
             color: var(--academic-dark);
@@ -62,7 +80,6 @@
             letter-spacing: 1px;
         }
 
-        /* Hamburger Icon */
         .hamburger {
             background: none;
             border: none;
@@ -82,7 +99,7 @@
             transition: var(--transition-slow);
         }
 
-        /* Sidebar Overlay */
+        /* SIDEBAR & OVERLAY */
         .sidebar-overlay {
             position: fixed;
             top: 0;
@@ -101,7 +118,6 @@
             visibility: visible;
         }
 
-        /* Sidebar Menu */
         .sidebar {
             position: fixed;
             top: 0;
@@ -162,7 +178,7 @@
             padding-left: 46px;
         }
 
-        /* Settings Area */
+        /* SETTINGS AREA */
         .sidebar-settings {
             margin-top: auto;
             padding: 40px;
@@ -203,7 +219,11 @@
             background-color: var(--saffron-deep);
         }
 
-        /* Page Content */
+        /* =========================================================
+        MAINTAINABLE CONTENT BLOCKS (Use these classes everywhere)
+        ========================================================= 
+        */
+        
         .page-content {
             flex-grow: 1;
             padding: 120px 10% 60px 10%;
@@ -220,12 +240,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        h1, h2, h3 {
-            font-family: 'Georgia', serif;
-            color: var(--academic-dark);
-            font-weight: normal;
-        }
-
+        /* Standard Page Heading */
         .page-title {
             font-size: 2.8rem;
             margin-bottom: 30px;
@@ -234,19 +249,85 @@
             display: inline-block;
         }
 
-        p {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            margin-bottom: 25px;
-            color: var(--text-muted);
+        /* Standard White Content Box */
+        .content-block {
+            background: var(--white);
+            padding: 60px 50px;
+            border-radius: 2px;
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 40px;
+            border-top: 1px solid var(--border-soft);
         }
 
-        .highlight-text {
+        /* Auto-sizing Grid for Cards */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        /* Hoverable Information Card */
+        .info-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-top: 4px solid var(--saffron-deep);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-slow);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 2px;
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-icon {
+            width: 45px;
+            height: 45px;
+            color: var(--saffron-deep);
+            margin-bottom: 20px;
+        }
+
+        .info-card h3 {
             color: var(--academic-dark);
-            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
         }
 
-        /* Information List Styling */
+        .info-card p {
+            font-size: 1.05rem;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        /* Quote / Message Block (Kept in CSS just in case you ever want to use it on another page) */
+        .quote-block {
+            background: var(--white);
+            padding: 50px;
+            border-left: 6px solid var(--saffron-deep);
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 40px;
+            font-style: italic;
+            position: relative;
+        }
+        
+        .quote-author {
+            display: block;
+            margin-top: 20px;
+            font-style: normal;
+            font-family: 'Georgia', serif;
+            font-weight: bold;
+            color: var(--academic-dark);
+        }
+
+        /* Bulleted Information Lists */
         .info-list {
             list-style: none;
             padding: 0;
@@ -267,15 +348,6 @@
             font-family: 'Georgia', serif;
         }
 
-        .content-block {
-            background: var(--white);
-            padding: 50px;
-            border-radius: 2px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
-            margin-bottom: 40px;
-            border-top: 1px solid var(--border-soft);
-        }
-
         /* Notice Board System */
         .notice-plate {
             display: flex;
@@ -284,13 +356,13 @@
             padding: 25px 30px;
             background: var(--white);
             border-left: 4px solid var(--saffron-deep);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+            box-shadow: var(--shadow-soft);
             margin-bottom: 20px;
             transition: var(--transition-slow);
         }
 
         .notice-plate:hover {
-            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            box-shadow: var(--shadow-hover);
             transform: translateX(5px);
         }
 
@@ -308,10 +380,11 @@
             margin-bottom: 5px;
         }
 
+        /* Universal Button */
         .btn-link {
             background-color: var(--academic-dark);
             color: var(--white);
-            padding: 10px 24px;
+            padding: 12px 24px;
             text-decoration: none;
             font-size: 0.9rem;
             letter-spacing: 1px;
@@ -319,13 +392,14 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            border-radius: 2px;
         }
 
         .btn-link:hover {
             background-color: var(--saffron-deep);
         }
 
-        /* Footer */
+        /* FOOTER */
         footer {
             background-color: var(--white);
             border-top: 1px solid var(--border-soft);
@@ -340,31 +414,37 @@
             margin-bottom: 10px;
         }
 
-        /* Utilities */
+        /* UTILITIES */
         .lang-bn { display: none; }
         svg { width: 18px; height: 18px; fill: currentColor; }
 
+        /* RESPONSIVE DESIGN */
         @media (max-width: 768px) {
             .page-title { font-size: 2rem; }
-            .content-block { padding: 30px 20px; }
+            .content-block, .quote-block { padding: 40px 20px; }
             .notice-plate { flex-direction: column; align-items: flex-start; gap: 20px; }
             .sidebar { width: 85vw; right: -85vw; }
             .top-bar { padding: 15px 20px; }
+            .grid-container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- SVG Icons -->
+    <!-- SVG Icon Library -->
     <svg style="display: none;">
         <symbol id="icon-close" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></symbol>
         <symbol id="icon-link" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></symbol>
         <symbol id="icon-refresh" viewBox="0 0 24 24"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></symbol>
         <symbol id="icon-lang" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM18.92 8h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></symbol>
         <symbol id="icon-settings" viewBox="0 0 24 24"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.06-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.73,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.06,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.43-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.49-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></symbol>
+        <symbol id="icon-heritage" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></symbol>
+        <symbol id="icon-academic" viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></symbol>
+        <symbol id="icon-innovation" viewBox="0 0 24 24"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 017 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"/></symbol>
+        <symbol id="icon-quote" viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></symbol>
     </svg>
 
-    <!-- Top Navigation -->
+    <!-- TOP NAVIGATION -->
     <div class="top-bar">
         <div class="logo">BAV</div>
         <button class="hamburger" id="menu-btn" onclick="toggleMenu()" aria-label="Toggle Menu">
@@ -374,10 +454,8 @@
         </button>
     </div>
 
-    <!-- Sidebar Overlay -->
+    <!-- SIDEBAR & OVERLAY -->
     <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleMenu()"></div>
-
-    <!-- Deep Styled Sidebar Menu with Close Button -->
     <div class="sidebar" id="sidebar-menu">
         <div class="sidebar-header">
             <button class="close-btn" onclick="toggleMenu()" aria-label="Close Menu">
@@ -385,6 +463,7 @@
             </button>
         </div>
         
+        <!-- HOW TO ADD A NEW MENU ITEM: Copy one of these pairs and change the href="#NAME" -->
         <a href="#home" class="menu-link lang-en">Home</a>
         <a href="#home" class="menu-link lang-bn">হোম</a>
         
@@ -403,6 +482,7 @@
         <a href="#projects" class="menu-link lang-en">Upcoming Projects</a>
         <a href="#projects" class="menu-link lang-bn">আসন্ন প্রকল্পসমূহ</a>
 
+        <!-- Settings -->
         <div class="sidebar-settings">
             <div class="settings-title">
                 <svg><use href="#icon-settings"></use></svg> Settings
@@ -418,36 +498,76 @@
         </div>
     </div>
 
-    <!-- MAIN CONTENT SECTIONS -->
+    <!-- 
+    =========================================================
+    START OF PAGES (Controlled by JavaScript Hash Routing)
+    ========================================================= 
+    -->
 
-    <!-- 1. HOME -->
+    <!-- 1. HOME PAGE -->
     <div id="home" class="page-content">
-        <div class="content-block" style="text-align: center; padding: 100px 20px;">
+        
+        <!-- Welcome Block -->
+        <div class="content-block" style="text-align: center;">
             <h1 class="page-title lang-en">Batikar Abhedananda Vidyapith</h1>
             <h1 class="page-title lang-bn">বাতিকার অভেদানন্দ বিদ্যাপীঠ</h1>
             
-            <p class="lang-en" style="font-family: 'Georgia', serif; font-size: 1.5rem; color: var(--saffron-deep);">Established 1958</p>
-            <p class="lang-bn" style="font-family: 'Georgia', serif; font-size: 1.5rem; color: var(--saffron-deep);">প্রতিষ্ঠিত ১৯৫৮</p>
+            <p class="lang-en" style="max-width: 750px; margin: 0 auto;">Batikar Abhedananda Vidyapith is a traditional and well-known educational institution in the Birbhum district of West Bengal, dedicated to the enlightenment of rural youth.</p>
+            <p class="lang-bn" style="max-width: 750px; margin: 0 auto;">বাতিকার অভেদানন্দ বিদ্যাপীঠ পশ্চিমবঙ্গের বীরভূম জেলার একটি ঐতিহ্যবাহী ও পরিচিত শিক্ষাপ্রতিষ্ঠান, যা গ্রামীণ যুবকদের আলোকিত করার জন্য নিবেদিত।</p>
+        </div>
+
+        <!-- Information Grid (Perfectly Aligned 2x2 Layout) -->
+        <div class="grid-container">
             
-            <p class="lang-en" style="max-width: 750px; margin: 30px auto 0 auto;">Batikar Abhedananda Vidyapith is a traditional and well-known educational institution in the Birbhum district of West Bengal.</p>
-            <p class="lang-bn" style="max-width: 750px; margin: 30px auto 0 auto;">বাতিকার অভেদানন্দ বিদ্যাপীঠ পশ্চিমবঙ্গের বীরভূম জেলার একটি ঐতিহ্যবাহী ও পরিচিত শিক্ষাপ্রতিষ্ঠান।</p>
+            <div class="info-card">
+                <svg class="card-icon"><use href="#icon-heritage"></use></svg>
+                <h3 class="lang-en">Rich Heritage</h3>
+                <h3 class="lang-bn">সমৃদ্ধ ঐতিহ্য</h3>
+                <p class="lang-en">Established in 1958 by the Batikar Sree Sree Ramkrishna Ashram to spread the light of education.</p>
+                <p class="lang-bn">শিক্ষার আলো ছড়িয়ে দিতে ১৯৫৮ সালে বাতিকার শ্রী শ্রী রামকৃষ্ণ আশ্রম কর্তৃক প্রতিষ্ঠিত।</p>
+            </div>
+
+            <div class="info-card">
+                <svg class="card-icon"><use href="#icon-academic"></use></svg>
+                <h3 class="lang-en">Academic Excellence</h3>
+                <h3 class="lang-bn">শিক্ষাগত উৎকর্ষ</h3>
+                <p class="lang-en">A premier Higher Secondary institution operating under WBBSE and WBCHSE guidelines.</p>
+                <p class="lang-bn">WBBSE এবং WBCHSE এর অধীনে পরিচালিত একটি শীর্ষস্থানীয় উচ্চমাধ্যমিক প্রতিষ্ঠান।</p>
+            </div>
+
+            <div class="info-card">
+                <svg class="card-icon"><use href="#icon-innovation"></use></svg>
+                <h3 class="lang-en">Modern Innovation</h3>
+                <h3 class="lang-bn">আধুনিক উদ্ভাবন</h3>
+                <p class="lang-en">Bridging tradition with the future through initiatives like the newly formed CS Club.</p>
+                <p class="lang-bn">নতুন গঠিত সিএস ক্লাবের মতো উদ্যোগের মাধ্যমে ঐতিহ্য এবং ভবিষ্যতের মধ্যে সেতুবন্ধন।</p>
+            </div>
+            
+            <div class="info-card">
+                <svg class="card-icon"><use href="#icon-quote"></use></svg>
+                <h3 class="lang-en">HOI Message</h3>
+                <h3 class="lang-bn">প্রধান শিক্ষকের বার্তা</h3>
+                <p class="lang-en">Holding our head high in rural Birbhum and carrying a glorious legacy forward.</p>
+                <p class="lang-bn">বীরভূমের গ্রামীণ পরিবেশে মাথা উঁচু করে গৌরবময় ঐতিহ্যকে এগিয়ে নিয়ে যাওয়া।</p>
+            </div>
+
         </div>
     </div>
 
-    <!-- 2. ABOUT -->
+
+    <!-- 2. ABOUT PAGE -->
     <div id="about" class="page-content">
         <h1 class="page-title lang-en">Brief Overview</h1>
         <h1 class="page-title lang-bn">সংক্ষিপ্ত বিবরণ</h1>
         
         <div class="content-block">
-            <!-- English Information List -->
+            <!-- HOW TO ADD TEXT: Copy and paste paragraph tags below -->
             <ul class="info-list lang-en">
                 <li><strong>Establishment:</strong> Founded in 1958 by the Batikar Sree Sree Ramkrishna Ashram.</li>
                 <li><strong>Mission:</strong> To advance education for rural communities, with a special focus on girls and the underprivileged.</li>
                 <li><strong>Academic System:</strong> It is a Higher Secondary (H.S.) school, successfully operating under the West Bengal Board of Secondary Education (WBBSE) and the West Bengal Council of Higher Secondary Education (WBCHSE).</li>
             </ul>
 
-            <!-- Bengali Information List -->
             <ul class="info-list lang-bn">
                 <li><strong>প্রতিষ্ঠা:</strong> ১৯৫৮ সালে বাতিকার শ্রী শ্রী রামকৃষ্ণ আশ্রম কর্তৃক এটি প্রতিষ্ঠিত হয়।</li>
                 <li><strong>লক্ষ্য:</strong> গ্রামীণ এলাকার মানুষ, বিশেষ করে ছাত্রী ও পিছিয়ে পড়া অংশকে শিক্ষায় এগিয়ে নেওয়া।</li>
@@ -456,7 +576,8 @@
         </div>
     </div>
 
-    <!-- 3. VISION -->
+
+    <!-- 3. VISION PAGE -->
     <div id="vision" class="page-content">
         <h1 class="page-title lang-en">Our Vision</h1>
         <h1 class="page-title lang-bn">আমাদের ভিশন</h1>
@@ -467,7 +588,8 @@
         </div>
     </div>
 
-    <!-- 4. CS CLUB -->
+
+    <!-- 4. CS CLUB PAGE -->
     <div id="cs-club" class="page-content">
         <h1 class="page-title lang-en">Computer Science Club</h1>
         <h1 class="page-title lang-bn">কম্পিউটার সায়েন্স ক্লাব</h1>
@@ -481,13 +603,14 @@
         </div>
     </div>
 
-    <!-- 5. NOTICE BOARD -->
+
+    <!-- 5. NOTICE BOARD PAGE -->
     <div id="notice" class="page-content">
         <h1 class="page-title lang-en">Notice Board</h1>
         <h1 class="page-title lang-bn">নোটিশ বোর্ড</h1>
         
         <div id="notice-container">
-            
+            <!-- HOW TO ADD A NEW NOTICE: Copy the <div class="notice-plate"> block below, and paste it directly above the older one. -->
             <div class="notice-plate">
                 <div class="notice-content">
                     <div class="notice-date">September 1, 2026</div>
@@ -496,17 +619,19 @@
                     <p class="lang-en" style="margin:0; font-size: 0.95rem;">Download the registration guidelines and requirements.</p>
                     <p class="lang-bn" style="margin:0; font-size: 0.95rem;">নিবন্ধন নির্দেশিকা এবং প্রয়োজনীয়তা ডাউনলোড করুন।</p>
                 </div>
-                <a href="https://docs.google.com/" target="_blank" class="btn-link">
+                <!-- To add a PDF or Doc link, replace the '#' below with your URL -->
+                <a href="#" target="_blank" class="btn-link">
                     <svg><use href="#icon-link"></use></svg>
                     <span class="lang-en">View Document</span>
                     <span class="lang-bn">নথি দেখুন</span>
                 </a>
             </div>
-            
+            <!-- End Notice Plate -->
         </div>
     </div>
 
-    <!-- 6. UPCOMING PROJECTS -->
+
+    <!-- 6. UPCOMING PROJECTS PAGE -->
     <div id="projects" class="page-content">
         <h1 class="page-title lang-en">Upcoming Projects</h1>
         <h1 class="page-title lang-bn">আসন্ন প্রকল্পসমূহ</h1>
@@ -517,15 +642,15 @@
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer>
         <p class="footer-text">&copy; <span id="current-year">2026</span> Batikar Abhedananda Vidyapith (BAV). All rights reserved.</p>
         <p class="footer-text" id="ist-time" style="font-family: 'Georgia', serif; color: var(--saffron-deep);">Loading Time...</p>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        /* 1. HASH ROUTING */
+        /* HASH ROUTING (Handles page switching) */
         function handleRouting() {
             let hash = window.location.hash.substring(1) || 'home';
             
@@ -539,10 +664,13 @@
             const target = document.getElementById(hash);
             if (target) {
                 target.style.display = 'block';
-                void target.offsetWidth; 
+                void target.offsetWidth; // Trigger reflow for animation
                 target.style.animation = 'elegantFade 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards';
                 
                 document.querySelectorAll(`.menu-link[href="#${hash}"]`).forEach(link => link.classList.add('active'));
+            } else {
+                // Fallback to home if page doesn't exist
+                document.getElementById('home').style.display = 'block';
             }
             
             window.scrollTo(0, 0);
@@ -556,7 +684,7 @@
         window.addEventListener('hashchange', handleRouting);
         window.addEventListener('DOMContentLoaded', handleRouting);
 
-        /* 2. MENU TOGGLE & OVERLAY */
+        /* MENU TOGGLE */
         function toggleMenu() {
             const sidebar = document.getElementById('sidebar-menu');
             const overlay = document.getElementById('sidebar-overlay');
@@ -576,7 +704,7 @@
             }
         }
 
-        /* 3. PERSISTENT LANGUAGE SETTINGS */
+        /* PERSISTENT LANGUAGE SETTINGS */
         let currentLang = localStorage.getItem('bav_lang') || 'en';
         
         function applyLanguage() {
@@ -603,12 +731,12 @@
 
         window.addEventListener('DOMContentLoaded', applyLanguage);
 
-        /* 4. HARD REFRESH */
+        /* HARD REFRESH */
         function customRefresh() {
             window.location.reload(true);
         }
 
-        /* 5. DYNAMIC CLOCK (IST) */
+        /* DYNAMIC CLOCK (IST) */
         function updateClock() {
             const timeDisplay = document.getElementById('ist-time');
             const now = new Date();
@@ -628,3 +756,4 @@
     </script>
 </body>
 </html>
+
