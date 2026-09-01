@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,39 +8,40 @@
     <link rel="icon" type="image/png" href="favicon.png">
     
     <style>
-        /* CSS Variables & Reset */
+        /* Deep, Academic, Clean Design Variables */
         :root {
-            --saffron: #FF671F; 
-            --saffron-dark: #cc5218;
-            --saffron-light: #fff5f0;
-            --dark-text: #1e272e;
-            --text-muted: #485460;
+            --saffron-deep: #B83A14; 
+            --saffron-hover: #8A2B0E;
+            --academic-dark: #2C3E50;
+            --academic-light: #FDFBF7; /* Paper cream */
             --white: #ffffff;
-            --bg-light: #f1f2f6;
-            --border-color: #dcdde1;
+            --border-soft: #E5E0D8;
+            --text-muted: #596A7A;
+            --transition-slow: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Georgia', 'Times New Roman', serif; /* Serif for headings */
         }
 
         body {
-            background-color: var(--bg-light);
-            color: var(--dark-text);
+            background-color: var(--academic-light);
+            color: var(--academic-dark);
             display: flex;
             flex-direction: column;
             min-height: 100vh;
             overflow-x: hidden;
+            font-family: 'Segoe UI', system-ui, sans-serif; /* Sans-serif for body */
         }
 
-        /* Top Bar */
+        /* Top Bar - Clean and Minimal */
         .top-bar {
-            background-color: var(--saffron);
-            color: var(--white);
-            padding: 12px 20px;
+            background-color: var(--white);
+            color: var(--academic-dark);
+            padding: 20px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -47,698 +49,524 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            border-bottom: 1px solid var(--border-soft);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            transition: var(--transition-slow);
         }
 
         .logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+            font-family: 'Georgia', serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--saffron-deep);
+            letter-spacing: 1px;
         }
 
-        /* Hamburger Menu Button */
+        /* Elegant Hamburger */
         .hamburger {
             background: none;
             border: none;
             cursor: pointer;
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 6px;
             padding: 5px;
+            z-index: 1100;
         }
 
         .hamburger span {
             display: block;
-            width: 25px;
-            height: 3px;
-            background-color: var(--white);
-            border-radius: 2px;
-            transition: 0.3s;
+            width: 30px;
+            height: 2px;
+            background-color: var(--academic-dark);
+            transition: var(--transition-slow);
         }
 
-        /* Sidebar Overlay */
-        .sidebar-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(0,0,0,0.5);
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.3s;
-            z-index: 1040;
-        }
-        .sidebar-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Sidebar Menu */
+        /* Sidebar - Deep and Slow */
         .sidebar {
             position: fixed;
             top: 0;
-            right: -320px;
-            width: 280px;
-            max-width: 80vw;
+            right: -400px;
+            width: 350px;
+            max-width: 100vw;
             height: 100vh;
-            background-color: var(--white);
-            box-shadow: -5px 0 20px rgba(0,0,0,0.15);
-            transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: var(--academic-dark);
+            color: var(--white);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            transition: right 0.7s cubic-bezier(0.23, 1, 0.32, 1);
             z-index: 1050;
             display: flex;
             flex-direction: column;
-            overflow-y: auto;
+            padding-top: 100px;
         }
 
         .sidebar.active {
             right: 0;
         }
 
-        .sidebar-header {
-            padding: 20px;
-            background-color: var(--saffron-light);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--dark-text);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 5px;
-            border-radius: 50%;
-            transition: background 0.2s;
-        }
-        
-        .close-btn:hover {
-            background: rgba(0,0,0,0.05);
-        }
-
         .menu-link {
-            padding: 15px 25px;
+            padding: 18px 40px;
             text-decoration: none;
-            color: var(--dark-text);
-            font-size: 1rem;
-            font-weight: 500;
-            border-bottom: 1px solid var(--bg-light);
-            transition: 0.2s;
-            display: block;
+            color: rgba(255,255,255,0.7);
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            border-left: 0px solid var(--saffron-deep);
+            transition: var(--transition-slow);
         }
 
         .menu-link:hover, .menu-link.active {
-            background-color: var(--saffron-light);
-            color: var(--saffron-dark);
-            padding-left: 30px;
-            border-left: 4px solid var(--saffron);
+            color: var(--white);
+            background-color: rgba(255,255,255,0.05);
+            border-left: 6px solid var(--saffron-deep);
+            padding-left: 46px;
         }
 
-        /* Settings Area in Sidebar */
-        .sidebar-controls {
+        /* Settings Area */
+        .sidebar-settings {
             margin-top: auto;
-            padding: 15px;
-            background: #fafafa;
-            border-top: 1px solid var(--border-color);
+            padding: 40px;
+            background-color: rgba(0,0,0,0.2);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .settings-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--saffron-deep);
+            margin-bottom: 20px;
             display: flex;
-            flex-direction: column;
+            align-items: center;
             gap: 10px;
         }
 
         .action-btn {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 4px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition-slow);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            width: 100%;
-            padding: 12px;
-            background-color: var(--white);
-            color: var(--dark-text);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
         }
 
         .action-btn:hover {
-            background-color: var(--saffron-light);
-            border-color: var(--saffron);
-            color: var(--saffron-dark);
+            border-color: var(--saffron-deep);
+            background-color: var(--saffron-deep);
         }
 
-        /* Scrolling Ticker */
-        .ticker-wrap {
-            width: 100%;
-            background-color: var(--dark-text);
-            color: var(--white);
-            padding: 8px 0;
-            margin-top: 55px; /* Offset for fixed top bar */
-            overflow: hidden;
-            position: relative;
-            font-size: 0.9rem;
-            display: flex;
-        }
-        
-        .ticker-label {
-            background-color: var(--saffron);
-            padding: 0 15px;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            z-index: 2;
-        }
-
-        .ticker-content {
-            white-space: nowrap;
-            padding-left: 140px; /* Offset for label */
-            animation: ticker 25s linear infinite;
-        }
-
-        .ticker-content:hover {
-            animation-play-state: paused;
-        }
-
-        @keyframes ticker {
-            0% { transform: translateX(100vw); }
-            100% { transform: translateX(-100%); }
-        }
-
-        /* Page Content & Cards */
+        /* Page Content Routing */
         .page-content {
             flex-grow: 1;
-            padding: 30px 5%;
+            padding: 120px 10% 60px 10%;
             display: none;
-            animation: fadeIn 0.4s ease;
             max-width: 1200px;
             margin: 0 auto;
             width: 100%;
+            animation: elegantFade 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+            opacity: 0;
+            transform: translateY(20px);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+        @keyframes elegantFade {
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Typography & Content Formatting */
         h1, h2, h3 {
-            color: var(--saffron-dark);
-            margin-bottom: 15px;
+            font-family: 'Georgia', serif;
+            color: var(--academic-dark);
+            font-weight: normal;
+        }
+
+        .page-title {
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--saffron-deep);
+            padding-bottom: 15px;
+            display: inline-block;
         }
 
         p {
-            font-size: 1.05rem;
-            line-height: 1.6;
-            margin-bottom: 15px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
             color: var(--text-muted);
         }
 
-        .card {
+        /* Academic Clean Cards */
+        .content-block {
             background: var(--white);
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-            margin-bottom: 25px;
-            border-top: 4px solid var(--saffron);
+            padding: 50px;
+            border-radius: 2px; /* Sharp corners for academic feel */
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            margin-bottom: 40px;
+            border-top: 1px solid var(--border-soft);
         }
 
-        .card-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 2px solid var(--bg-light);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        /* Notice Board */
+        /* Notice Board System */
         .notice-plate {
-            background: var(--white);
-            border: 1px solid var(--border-color);
-            border-left: 5px solid var(--saffron);
-            padding: 15px 20px;
-            border-radius: 8px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
-            transition: 0.2s;
+            padding: 25px 30px;
+            background: var(--white);
+            border-left: 4px solid var(--saffron-deep);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+            transition: var(--transition-slow);
         }
 
         .notice-plate:hover {
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            transform: translateX(5px);
         }
 
-        .btn-primary {
-            background-color: var(--saffron);
+        .notice-date {
+            font-family: 'Georgia', serif;
+            color: var(--saffron-deep);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .notice-title {
+            font-size: 1.25rem;
+            color: var(--academic-dark);
+            margin-bottom: 5px;
+        }
+
+        .btn-link {
+            background-color: var(--academic-dark);
             color: var(--white);
-            padding: 8px 16px;
+            padding: 10px 24px;
             text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
             font-size: 0.9rem;
-            transition: 0.2s;
+            letter-spacing: 1px;
+            transition: var(--transition-slow);
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
         }
 
-        .btn-primary:hover {
-            background-color: var(--saffron-dark);
+        .btn-link:hover {
+            background-color: var(--saffron-deep);
         }
 
         /* Footer */
         footer {
-            background-color: var(--dark-text);
-            color: var(--white);
-            padding: 40px 5% 20px 5%;
+            background-color: var(--white);
+            border-top: 1px solid var(--border-soft);
+            padding: 40px 10%;
+            text-align: center;
             margin-top: auto;
         }
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 30px;
-        }
-
-        .footer-col h3 {
-            color: var(--saffron);
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-        }
-
-        .footer-col p, .footer-col a {
-            color: #b2bec3;
-            text-decoration: none;
-            font-size: 0.95rem;
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
             margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .footer-col a:hover {
-            color: var(--white);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            color: #b2bec3;
-            font-size: 0.85rem;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
         }
 
         /* Utilities */
-        .lang-bn { display: none; }
-        .icon { width: 20px; height: 20px; fill: currentColor; }
-        
-        /* Mobile Adjustments */
-        @media (max-width: 600px) {
-            .ticker-label { font-size: 0.8rem; padding: 0 10px; }
-            .ticker-content { padding-left: 110px; }
-            .notice-plate { flex-direction: column; align-items: flex-start; gap: 15px; }
-            .logo { font-size: 1rem; }
-            .card { padding: 15px; }
+        .lang-bn { display: none; } /* Handled by JS */
+        svg { width: 18px; height: 18px; fill: currentColor; }
+
+        @media (max-width: 768px) {
+            .page-title { font-size: 2rem; }
+            .content-block { padding: 30px 20px; }
+            .notice-plate { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .sidebar { width: 85vw; }
+            .top-bar { padding: 15px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- SVG Definitions for clean reuse -->
+    <!-- SVG Icons for clean rendering without emojis -->
     <svg style="display: none;">
-        <symbol id="icon-close" viewBox="0 0 24 24">
-            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-        </symbol>
-        <symbol id="icon-settings" viewBox="0 0 24 24">
-            <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.06-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.73,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.06,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.43-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.49-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
-        </symbol>
-        <symbol id="icon-language" viewBox="0 0 24 24">
-            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM18.92 8h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/>
-        </symbol>
-        <symbol id="icon-refresh" viewBox="0 0 24 24">
-            <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
-        </symbol>
-        <symbol id="icon-phone" viewBox="0 0 24 24">
-            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-        </symbol>
-        <symbol id="icon-email" viewBox="0 0 24 24">
-            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-        </symbol>
-        <symbol id="icon-link" viewBox="0 0 24 24">
-            <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
-        </symbol>
+        <symbol id="icon-link" viewBox="0 0 24 24"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></symbol>
+        <symbol id="icon-refresh" viewBox="0 0 24 24"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></symbol>
+        <symbol id="icon-lang" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM18.92 8h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></symbol>
+        <symbol id="icon-settings" viewBox="0 0 24 24"><path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.06-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.73,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.06,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.43-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.49-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/></symbol>
     </svg>
 
-    <!-- Fixed Top Navigation -->
+    <!-- Top Navigation -->
     <div class="top-bar">
-        <div class="logo-container">
-            <div class="logo">BAV</div>
-        </div>
-        <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <div class="logo">BAV</div>
+        <button class="hamburger" id="menu-btn" onclick="toggleMenu()" aria-label="Toggle Menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
     </div>
 
-    <!-- Scrolling Notifications -->
-    <div class="ticker-wrap">
-        <div class="ticker-label">
-            <span class="lang-en">Latest</span>
-            <span class="lang-bn">সর্বশেষ</span>
-        </div>
-        <div class="ticker-content">
-            <span class="lang-en">Click Here | Central Sector National Means-Cum-Merit Scholarship Examination, 2024 (For the students studying in class VIII) | National Fellowship for Higher Education of ST students for the FY 2023-24 | Helpline Number (24 X 7) for Women in Distress : 7827170170</span>
-            <span class="lang-bn">এখানে ক্লিক করুন | কেন্দ্রীয় সেক্টর ন্যাশনাল মিনস-কাম-মেরিট স্কলারশিপ পরীক্ষা, ২০২৪ (অষ্টম শ্রেণির শিক্ষার্থীদের জন্য) | ২০২৩-২৪ অর্থবছরের জন্য এসটি শিক্ষার্থীদের উচ্চশিক্ষার জন্য জাতীয় ফেলোশিপ | মহিলাদের জন্য হেল্পলাইন নম্বর (২৪ X ৭) : ৭৮২৭১৭০১৭০</span>
-        </div>
-    </div>
-
-    <!-- Sidebar Overlay & Menu -->
-    <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleMenu()"></div>
+    <!-- Deep Styled Sidebar Menu -->
     <div class="sidebar" id="sidebar-menu">
-        <div class="sidebar-header">
-            <strong style="color: var(--saffron-dark);">Menu</strong>
-            <button class="close-btn" onclick="toggleMenu()" aria-label="Close Menu">
-                <svg class="icon"><use href="#icon-close"></use></svg>
-            </button>
-        </div>
-        
         <a href="#home" class="menu-link lang-en">Home</a>
         <a href="#home" class="menu-link lang-bn">হোম</a>
         
         <a href="#about" class="menu-link lang-en">About</a>
         <a href="#about" class="menu-link lang-bn">আমাদের সম্পর্কে</a>
-
-        <a href="#hoi" class="menu-link lang-en">HOI Desk</a>
-        <a href="#hoi" class="menu-link lang-bn">প্রধান শিক্ষকের বার্তা</a>
         
-        <a href="#admissions" class="menu-link lang-en">Admissions</a>
-        <a href="#admissions" class="menu-link lang-bn">ভর্তি</a>
-
-        <a href="#academics" class="menu-link lang-en">Academics</a>
-        <a href="#academics" class="menu-link lang-bn">শিক্ষায়তনিক</a>
+        <a href="#vision" class="menu-link lang-en">Vision</a>
+        <a href="#vision" class="menu-link lang-bn">ভিশন</a>
         
         <a href="#cs-club" class="menu-link lang-en">CS Club</a>
         <a href="#cs-club" class="menu-link lang-bn">সিএস ক্লাব</a>
-
-        <a href="#alumni" class="menu-link lang-en">Alumni</a>
-        <a href="#alumni" class="menu-link lang-bn">প্রাক্তন ছাত্র</a>
         
         <a href="#notice" class="menu-link lang-en">Notice</a>
         <a href="#notice" class="menu-link lang-bn">নোটিশ</a>
 
-        <a href="#gallery" class="menu-link lang-en">Gallery</a>
-        <a href="#gallery" class="menu-link lang-bn">গ্যালারি</a>
+        <a href="#projects" class="menu-link lang-en">Upcoming Projects</a>
+        <a href="#projects" class="menu-link lang-bn">আসন্ন প্রকল্পসমূহ</a>
 
-        <a href="#teachers" class="menu-link lang-en">Teachers</a>
-        <a href="#teachers" class="menu-link lang-bn">শিক্ষকগণ</a>
-
-        <a href="#rules" class="menu-link lang-en">Rules & Regulations</a>
-        <a href="#rules" class="menu-link lang-bn">নিয়মকানুন</a>
-
-        <a href="#contact" class="menu-link lang-en">Contact Us</a>
-        <a href="#contact" class="menu-link lang-bn">যোগাযোগ</a>
-
-        <div class="sidebar-controls">
-            <span style="font-size: 0.8rem; font-weight: bold; color: var(--text-muted); display: flex; align-items: center; gap: 5px;">
-                <svg class="icon" style="width: 14px; height: 14px;"><use href="#icon-settings"></use></svg> Settings
-            </span>
+        <div class="sidebar-settings">
+            <div class="settings-title">
+                <svg><use href="#icon-settings"></use></svg> Settings
+            </div>
             <button class="action-btn" onclick="toggleLanguage()">
-                <svg class="icon"><use href="#icon-language"></use></svg>
+                <svg><use href="#icon-lang"></use></svg>
                 <span id="lang-btn-text">Switch to Bengali</span>
             </button>
             <button class="action-btn" onclick="customRefresh()">
-                <svg class="icon"><use href="#icon-refresh"></use></svg>
-                <span>Refresh Page</span>
+                <svg><use href="#icon-refresh"></use></svg>
+                <span>Hard Refresh</span>
             </button>
         </div>
     </div>
 
-    <!-- PAGE CONTENT ROUTING -->
+    <!-- MAIN CONTENT SECTIONS -->
 
-    <!-- 1. Home Page -->
+    <!-- 1. HOME -->
     <div id="home" class="page-content">
-        <div class="card" style="text-align: center;">
-            <h1 class="lang-en" style="font-size: 2.2rem; margin-top: 10px;">BATIKAR ABHEDANANDA VIDYAPITH</h1>
-            <h1 class="lang-bn" style="font-size: 2.2rem; margin-top: 10px;">বটিকর অভেদানন্দ বিদ্যাপীঠ</h1>
-            <p class="lang-en" style="color: var(--saffron); font-weight: bold;">Established 1958</p>
-            <p class="lang-bn" style="color: var(--saffron); font-weight: bold;">প্রতিষ্ঠিত ১৯৫৮</p>
-        </div>
-
-        <div class="card">
-            <div class="card-title">
-                <svg class="icon" style="color: var(--saffron);"><use href="#icon-settings"></use></svg>
-                <h2 class="lang-en" style="margin: 0;">Overview</h2>
-                <h2 class="lang-bn" style="margin: 0;">সংক্ষিপ্ত বিবরণ</h2>
-            </div>
-            <p class="lang-en">BATIKAR ABHEDANANDA VIDYAPITH was set up in 1958 by Batikar Sree Sree Ramkrishna Ashram for the enlightenment of the rural people, specially girls and underprivileged. The founder fathers dreamt of a society which would be disciplined by the great teachings of Sri Ramkrishna. The visionaries dreamt to make the institution a centre of excellence. The present management is a continuation of that noble legacy.</p>
-            
-            <p class="lang-bn">বটিকর অভেদানন্দ বিদ্যাপীঠ ১৯৫৮ সালে বটিকর শ্রী শ্রী রামকৃষ্ণ আশ্রম দ্বারা গ্রামীণ মানুষ, বিশেষ করে নারী ও সুবিধাবঞ্চিতদের আলোকিত করার জন্য প্রতিষ্ঠিত হয়েছিল। প্রতিষ্ঠাতারা এমন একটি সমাজের স্বপ্ন দেখেছিলেন যা শ্রী রামকৃষ্ণের মহান শিক্ষার দ্বারা সুশৃঙ্খল হবে। দূরদর্শীরা এই প্রতিষ্ঠানটিকে একটি উৎকর্ষ কেন্দ্রে পরিণত করার স্বপ্ন দেখেছিলেন। বর্তমান পরিচালনা পর্ষদ সেই মহৎ ঐতিহ্যেরই ধারাবাহিকতা বজায় রেখেছে।</p>
-        </div>
-
-        <div class="card">
-            <h3 class="lang-en">Student Benefits & Latest Activity</h3>
-            <h3 class="lang-bn">শিক্ষার্থীদের সুবিধা এবং সর্বশেষ কার্যক্রম</h3>
-            <p class="lang-en">Our institution regularly organizes various events, academic sessions, and provides extensive benefits through government schemes like Kanyashree and WBBSE/WBCHSE integrated programs.</p>
-            <p class="lang-bn">আমাদের প্রতিষ্ঠান নিয়মিত বিভিন্ন ইভেন্ট, একাডেমিক সেশন আয়োজন করে এবং কন্যাশ্রী ও WBBSE/WBCHSE সমন্বিত কর্মসূচির মতো সরকারি প্রকল্পের মাধ্যমে ব্যাপক সুবিধা প্রদান করে।</p>
+        <div class="content-block" style="text-align: center; padding: 100px 20px;">
+            <h1 class="page-title lang-en">Batikar Abhedananda Vidyapith</h1>
+            <h1 class="page-title lang-bn">বটিকর অভেদানন্দ বিদ্যাপীঠ</h1>
+            <p class="lang-en" style="font-family: 'Georgia', serif; font-size: 1.5rem; color: var(--saffron-deep);">Established 1958</p>
+            <p class="lang-bn" style="font-family: 'Georgia', serif; font-size: 1.5rem; color: var(--saffron-deep);">প্রতিষ্ঠিত ১৯৫৮</p>
+            <p class="lang-en" style="max-width: 700px; margin: 30px auto 0 auto;">Dedicated to the enlightenment of rural youth, building character, and striving for academic excellence guided by the teachings of Sri Ramakrishna.</p>
+            <p class="lang-bn" style="max-width: 700px; margin: 30px auto 0 auto;">শ্রী রামকৃষ্ণের শিক্ষায় পরিচালিত হয়ে গ্রামীণ যুবকদের আলোকিত করা, চরিত্র গঠন এবং শিক্ষাগত উৎকর্ষের জন্য নিবেদিত।</p>
         </div>
     </div>
 
-    <!-- 2. HOI Desk -->
-    <div id="hoi" class="page-content">
-        <div class="card">
-            <div class="card-title">
-                <h2 class="lang-en" style="margin: 0;">HOI Message</h2>
-                <h2 class="lang-bn" style="margin: 0;">প্রধান শিক্ষকের বার্তা</h2>
-            </div>
-            <p class="lang-en">Our institution with a glorious heritage and a hoary past is holding its head high in this rural part of Birbhum. It also produces successful professionals spread all over the world holding different posts with dignity.</p>
-            <p class="lang-bn">একটি গৌরবময় ঐতিহ্য এবং সুপ্রাচীন অতীত নিয়ে আমাদের প্রতিষ্ঠান বীরভূমের এই গ্রামীণ অংশে মাথা উঁচু করে দাঁড়িয়ে আছে। এটি বিশ্বজুড়ে মর্যাদার সাথে বিভিন্ন পদে অধিষ্ঠিত সফল পেশাদার তৈরি করেছে।</p>
-            
-            <p class="lang-en">With the active cooperation of our managing Committee members, teaching & non-teaching staff, our students are still carrying the legacy of this institution.</p>
-            <p class="lang-bn">আমাদের পরিচালন কমিটির সদস্য, শিক্ষণ এবং অশিক্ষণ কর্মীদের সক্রিয় সহযোগিতায়, আমাদের শিক্ষার্থীরা এখনও এই প্রতিষ্ঠানের ঐতিহ্য বহন করে চলেছে।</p>
-        </div>
-    </div>
-
-    <!-- 3. CS Club -->
-    <div id="cs-club" class="page-content">
-        <div class="card">
-            <h2 class="lang-en">Computer Science (CS) Club</h2>
-            <h2 class="lang-bn">কম্পিউটার সায়েন্স (CS) ক্লাব</h2>
-            <p class="lang-en" style="font-weight: bold; color: var(--saffron);">Built newly on 1st September, 2026!</p>
-            <p class="lang-bn" style="font-weight: bold; color: var(--saffron);">১লা সেপ্টেম্বর, ২০২৬ তারিখে নতুনভাবে প্রতিষ্ঠিত!</p>
-            <p class="lang-en">Preparing rural youth for a digital future through coding and practical technical education.</p>
-            <p class="lang-bn">কোডিং এবং ব্যবহারিক প্রযুক্তিগত শিক্ষার মাধ্যমে গ্রামীণ যুবকদের ডিজিটাল ভবিষ্যতের জন্য প্রস্তুত করা।</p>
-        </div>
-    </div>
-
-    <!-- 4. Notice Board -->
-    <div id="notice" class="page-content">
-        <h2 class="lang-en" style="margin-bottom: 20px;">Notices & Notifications</h2>
-        <h2 class="lang-bn" style="margin-bottom: 20px;">নোটিশ এবং বিজ্ঞপ্তি</h2>
+    <!-- 2. ABOUT -->
+    <div id="about" class="page-content">
+        <h1 class="page-title lang-en">About the Institution</h1>
+        <h1 class="page-title lang-bn">প্রতিষ্ঠান সম্পর্কে</h1>
         
-        <div class="notice-plate">
-            <div>
-                <div style="color: var(--saffron); font-weight: bold; font-size: 0.85rem; margin-bottom: 5px;">September 1, 2026</div>
-                <h3 class="lang-en" style="margin-bottom: 5px; color: var(--dark-text); font-size: 1.1rem;">CS Club Registration Open</h3>
-                <h3 class="lang-bn" style="margin-bottom: 5px; color: var(--dark-text); font-size: 1.1rem;">সিএস ক্লাব নিবন্ধন উন্মুক্ত</h3>
-                <p class="lang-en" style="font-size: 0.9rem; margin-bottom: 0;">Guidelines and forms available for students.</p>
-                <p class="lang-bn" style="font-size: 0.9rem; margin-bottom: 0;">শিক্ষার্থীদের জন্য নির্দেশিকা এবং ফর্ম উপলব্ধ।</p>
-            </div>
-            <a href="#" target="_blank" class="btn-primary">
-                <svg class="icon" style="width: 16px; height: 16px;"><use href="#icon-link"></use></svg>
-                <span class="lang-en">View PDF</span>
-                <span class="lang-bn">পিডিএফ দেখুন</span>
-            </a>
+        <div class="content-block">
+            <!-- 
+            =========================================
+            HOW TO ADD MORE TEXT TO A SECTION:
+            Just copy a <p> tag block and paste it below the existing ones. 
+            Keep the class="lang-en" for English and class="lang-bn" for Bengali!
+            =========================================
+            -->
+            <p class="lang-en">Batikar Abhedananda Vidyapith (BAV) was set up in 1958 by the Batikar Sree Sree Ramkrishna Ashram. The primary aim was to bring the light of education to rural communities, with a special focus on girls and underprivileged children in the Birbhum district.</p>
+            <p class="lang-bn">বটিকর অভেদানন্দ বিদ্যাপীঠ (BAV) ১৯৫৮ সালে বটিকর শ্রী শ্রী রামকৃষ্ণ আশ্রম দ্বারা প্রতিষ্ঠিত হয়েছিল। বীরভূম জেলার গ্রামীণ সমাজ, বিশেষ করে নারী ও সুবিধাবঞ্চিত শিশুদের কাছে শিক্ষার আলো পৌঁছে দেওয়াই ছিল এর প্রধান লক্ষ্য।</p>
+            
+            <p class="lang-en">Over the decades, BAV has grown into a highly respected educational center, producing successful professionals across various fields who carry the dignified legacy of our institution worldwide.</p>
+            <p class="lang-bn">কয়েক দশক ধরে, BAV একটি অত্যন্ত সম্মানিত শিক্ষাকেন্দ্রে পরিণত হয়েছে, যারা বিভিন্ন ক্ষেত্রে সফল পেশাদার তৈরি করছে যারা বিশ্বব্যাপী আমাদের প্রতিষ্ঠানের মর্যাদাপূর্ণ ঐতিহ্য বহন করে চলেছে।</p>
         </div>
     </div>
 
-    <!-- 5. Contact & Address -->
-    <div id="contact" class="page-content">
-        <div class="card">
-            <h2 class="lang-en">Contact Us</h2>
-            <h2 class="lang-bn">যোগাযোগ</h2>
-            <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
-                <p style="margin:0; display: flex; align-items: center; gap: 10px; font-size: 1.1rem; color: var(--dark-text);">
-                    <svg class="icon" style="color: var(--saffron);"><use href="#icon-phone"></use></svg>
-                    <strong>9434034061</strong>
-                </p>
-                <p style="margin:0; display: flex; align-items: center; gap: 10px; font-size: 1.1rem; color: var(--dark-text);">
-                    <svg class="icon" style="color: var(--saffron);"><use href="#icon-email"></use></svg>
-                    <strong>bavbatikar@gmail.com</strong>
-                </p>
-                <p style="margin:0; margin-top: 10px; color: var(--text-muted);">
-                    <strong class="lang-en">Institution Address:</strong>
-                    <strong class="lang-bn">প্রতিষ্ঠানের ঠিকানা:</strong><br>
-                    BATIKAR ABHEDANANDA VIDYAPITH<br>
-                    ILLAMBAZAR NEW, BIRBHUM
-                </p>
-            </div>
+    <!-- 3. VISION -->
+    <div id="vision" class="page-content">
+        <h1 class="page-title lang-en">Our Vision</h1>
+        <h1 class="page-title lang-bn">আমাদের ভিশন</h1>
+        
+        <div class="content-block">
+            <p class="lang-en">The founder fathers envisioned a society disciplined and elevated by great moral teachings. Our goal is to provide a "man-making and character-building" education that bridges our rich traditional heritage with modern scientific advancements.</p>
+            <p class="lang-bn">প্রতিষ্ঠাতারা এমন একটি সমাজের স্বপ্ন দেখেছিলেন যা মহান নৈতিক শিক্ষার দ্বারা সুশৃঙ্খল এবং উন্নত হবে। আমাদের লক্ষ্য হল এমন একটি "মানুষ গড়ার এবং চরিত্র গঠনের" শিক্ষা প্রদান করা যা আমাদের সমৃদ্ধ ঐতিহ্য এবং আধুনিক বৈজ্ঞানিক অগ্রগতির মধ্যে সেতুবন্ধন তৈরি করে।</p>
         </div>
     </div>
 
-    <!-- Generic Fallback Page for Other Menu Items -->
-    <div id="generic" class="page-content">
-        <div class="card" style="text-align: center; padding: 50px 20px;">
-            <svg class="icon" style="width: 50px; height: 50px; color: var(--border-color); margin-bottom: 15px;"><use href="#icon-settings"></use></svg>
-            <h2 class="lang-en">Page Under Construction</h2>
-            <h2 class="lang-bn">পৃষ্ঠা তৈরির কাজ চলছে</h2>
-            <p class="lang-en">This section will be updated soon.</p>
-            <p class="lang-bn">এই বিভাগটি শীঘ্রই আপডেট করা হবে।</p>
+    <!-- 4. CS CLUB -->
+    <div id="cs-club" class="page-content">
+        <h1 class="page-title lang-en">Computer Science Club</h1>
+        <h1 class="page-title lang-bn">কম্পিউটার সায়েন্স ক্লাব</h1>
+        
+        <div class="content-block">
+            <h3 class="lang-en" style="color: var(--saffron-deep); margin-bottom: 20px;">Established September 1, 2026</h3>
+            <h3 class="lang-bn" style="color: var(--saffron-deep); margin-bottom: 20px;">প্রতিষ্ঠিত ১লা সেপ্টেম্বর, ২০২৬</h3>
+            
+            <p class="lang-en">The BAV CS Club is a transformative initiative designed to equip our students with modern technological skills. From basic computer literacy to introductory coding and logical reasoning, we prepare our rural youth to stand confidently in the global digital landscape.</p>
+            <p class="lang-bn">BAV সিএস ক্লাব হলো আমাদের শিক্ষার্থীদের আধুনিক প্রযুক্তিগত দক্ষতায় সজ্জিত করার জন্য ডিজাইন করা একটি যুগান্তকারী উদ্যোগ। প্রাথমিক কম্পিউটার শিক্ষা থেকে শুরু করে কোডিং এবং যুক্তিমূলক চিন্তাভাবনা পর্যন্ত, আমরা আমাদের গ্রামীণ যুবকদের বৈশ্বিক ডিজিটাল ল্যান্ডস্কেপে আত্মবিশ্বাসের সাথে দাঁড়াতে প্রস্তুত করি।</p>
+        </div>
+    </div>
+
+    <!-- 5. NOTICE BOARD -->
+    <div id="notice" class="page-content">
+        <h1 class="page-title lang-en">Notice Board</h1>
+        <h1 class="page-title lang-bn">নোটিশ বোর্ড</h1>
+        
+        <div id="notice-container">
+            <!-- 
+            =========================================
+            HOW TO ADD A NEW NOTICE:
+            Copy the entire <div class="notice-plate">...</div> block below, 
+            paste it right here above the older notice, and change the text and the href="YOUR_LINK_HERE".
+            =========================================
+            -->
+            
+            <div class="notice-plate">
+                <div class="notice-content">
+                    <div class="notice-date">September 1, 2026</div>
+                    <h3 class="notice-title lang-en">CS Club Official Registration</h3>
+                    <h3 class="notice-title lang-bn">সিএস ক্লাবের অফিসিয়াল নিবন্ধন</h3>
+                    <p class="lang-en" style="margin:0; font-size: 0.95rem;">Download the registration guidelines and requirements.</p>
+                    <p class="lang-bn" style="margin:0; font-size: 0.95rem;">নিবন্ধন নির্দেশিকা এবং প্রয়োজনীয়তা ডাউনলোড করুন।</p>
+                </div>
+                <!-- Change href below to your Google Doc/PDF link -->
+                <a href="https://docs.google.com/" target="_blank" class="btn-link">
+                    <svg><use href="#icon-link"></use></svg>
+                    <span class="lang-en">View Document</span>
+                    <span class="lang-bn">নথি দেখুন</span>
+                </a>
+            </div>
+            
+            <!-- End of a notice block -->
+            
+        </div>
+    </div>
+
+    <!-- 6. UPCOMING PROJECTS -->
+    <div id="projects" class="page-content">
+        <h1 class="page-title lang-en">Upcoming Projects</h1>
+        <h1 class="page-title lang-bn">আসন্ন প্রকল্পসমূহ</h1>
+        
+        <div class="content-block">
+            <p class="lang-en">Details regarding future infrastructural and academic projects will be updated here soon.</p>
+            <p class="lang-bn">ভবিষ্যতের অবকাঠামোগত এবং একাডেমিক প্রকল্প সংক্রান্ত বিস্তারিত তথ্য শীঘ্রই এখানে আপডেট করা হবে।</p>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h3 class="lang-en">Institution Address</h3>
-                <h3 class="lang-bn">প্রতিষ্ঠানের ঠিকানা</h3>
-                <p>BATIKAR ABHEDANANDA VIDYAPITH<br>ILLAMBAZAR NEW, BIRBHUM</p>
-                <p><svg class="icon"><use href="#icon-phone"></use></svg> 9434034061</p>
-                <p><svg class="icon"><use href="#icon-email"></use></svg> bavbatikar@gmail.com</p>
-            </div>
-            
-            <div class="footer-col">
-                <h3 class="lang-en">Quick Links</h3>
-                <h3 class="lang-bn">প্রয়োজনীয় লিংক</h3>
-                <a href="#"><svg class="icon"><use href="#icon-link"></use></svg> WBBSE</a>
-                <a href="#"><svg class="icon"><use href="#icon-link"></use></svg> WBCHSE</a>
-                <a href="#"><svg class="icon"><use href="#icon-link"></use></svg> School Education WB</a>
-                <a href="#"><svg class="icon"><use href="#icon-link"></use></svg> Kanyashree</a>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; <span id="current-year">2026</span> BATIKAR ABHEDANANDA VIDYAPITH. All rights reserved.</p>
-            <p id="ist-time" style="font-family: monospace;">Loading IST Time...</p>
-        </div>
+        <p class="footer-text">&copy; <span id="current-year">2026</span> Batikar Abhedananda Vidyapith (BAV). All rights reserved.</p>
+        <p class="footer-text" id="ist-time" style="font-family: 'Georgia', serif; color: var(--saffron-deep);">Loading Time...</p>
     </footer>
 
     <!-- JavaScript -->
     <script>
-        /* 1. HASH ROUTING (Ensures reload keeps you on the same page) */
-        const validPages = ['home', 'about', 'hoi', 'admissions', 'academics', 'cs-club', 'alumni', 'notice', 'gallery', 'teachers', 'rules', 'contact'];
-        
+        /* 1. HASH ROUTING (Clean Page Switching) */
         function handleRouting() {
-            // Get hash minus the '#'
-            let hash = window.location.hash.substring(1);
+            let hash = window.location.hash.substring(1) || 'home';
             
-            // Default to home if empty
-            if (!hash) {
-                hash = 'home';
-                window.history.replaceState(null, null, '#home');
-            }
-
             // Hide all pages
-            document.querySelectorAll('.page-content').forEach(page => page.style.display = 'none');
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.style.display = 'none';
+                page.style.animation = 'none'; // reset animation
+            });
             
-            // Remove active class from all links
+            // Remove active states from menu
             document.querySelectorAll('.menu-link').forEach(link => link.classList.remove('active'));
             
-            // Determine which DOM element to show
-            let targetDiv = document.getElementById(hash);
-            
-            // If the specific page doesn't exist yet, show generic fallback
-            if (!targetDiv) {
-                targetDiv = document.getElementById('generic');
+            // Show target
+            const target = document.getElementById(hash);
+            if (target) {
+                target.style.display = 'block';
+                // Trigger reflow to restart animation
+                void target.offsetWidth; 
+                target.style.animation = 'elegantFade 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards';
+                
+                // Highlight menu item
+                document.querySelectorAll(`.menu-link[href="#${hash}"]`).forEach(link => link.classList.add('active'));
             }
             
-            targetDiv.style.display = 'block';
-
-            // Highlight active menu link
-            document.querySelectorAll(`.menu-link[href="#${hash}"]`).forEach(link => link.classList.add('active'));
-
-            // Scroll to top
             window.scrollTo(0, 0);
 
-            // Close sidebar if open (mobile UX)
+            // Close menu if mobile
             const sidebar = document.getElementById('sidebar-menu');
             if (sidebar.classList.contains('active')) {
                 toggleMenu();
             }
         }
 
-        // Listen for URL changes and run on initial load
         window.addEventListener('hashchange', handleRouting);
         window.addEventListener('DOMContentLoaded', handleRouting);
 
 
-        /* 2. SIDEBAR TOGGLE */
+        /* 2. MENU TOGGLE ANIMATION */
         function toggleMenu() {
             const sidebar = document.getElementById('sidebar-menu');
-            const overlay = document.getElementById('sidebar-overlay');
+            const hamburger = document.getElementById('menu-btn').getElementsByTagName('span');
             
             sidebar.classList.toggle('active');
-            overlay.classList.toggle('active');
+            
+            if (sidebar.classList.contains('active')) {
+                hamburger[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                hamburger[1].style.opacity = '0';
+                hamburger[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+            } else {
+                hamburger[0].style.transform = 'none';
+                hamburger[1].style.opacity = '1';
+                hamburger[2].style.transform = 'none';
+            }
         }
 
 
-        /* 3. LANGUAGE TOGGLE (EN / BN) */
-        let currentLang = 'en';
-        function toggleLanguage() {
+        /* 3. PERSISTENT LANGUAGE SETTINGS (Saves to Browser Storage) */
+        
+        // Check if a language is saved in localStorage, default to 'en'
+        let currentLang = localStorage.getItem('bav_lang') || 'en';
+        
+        function applyLanguage() {
             const enElements = document.querySelectorAll('.lang-en');
             const bnElements = document.querySelectorAll('.lang-bn');
             const toggleBtnText = document.getElementById('lang-btn-text');
 
             if (currentLang === 'en') {
-                enElements.forEach(el => el.style.display = 'none');
-                bnElements.forEach(el => el.style.display = 'block');
-                toggleBtnText.innerText = 'Switch to English';
-                currentLang = 'bn';
-            } else {
                 bnElements.forEach(el => el.style.display = 'none');
                 enElements.forEach(el => el.style.display = 'block');
                 toggleBtnText.innerText = 'Switch to Bengali';
-                currentLang = 'en';
+            } else {
+                enElements.forEach(el => el.style.display = 'none');
+                bnElements.forEach(el => el.style.display = 'block');
+                toggleBtnText.innerText = 'Switch to English';
             }
         }
 
+        function toggleLanguage() {
+            // Flip the language
+            currentLang = (currentLang === 'en') ? 'bn' : 'en';
+            
+            // Save to browser memory so refresh remembers it
+            localStorage.setItem('bav_lang', currentLang);
+            
+            // Apply visually
+            applyLanguage();
+        }
 
-        /* 4. HARD REFRESH (Preserves current hash due to the URL remaining unchanged) */
+        // Apply chosen language on initial page load
+        window.addEventListener('DOMContentLoaded', applyLanguage);
+
+
+        /* 4. HARD REFRESH */
         function customRefresh() {
             window.location.reload(true);
         }
 
-
-        /* 5. DYNAMIC CLOCK & DATE (IST) */
+        /* 5. DYNAMIC CLOCK (IST) */
         function updateClock() {
             const timeDisplay = document.getElementById('ist-time');
             const now = new Date();
             
             const options = {
                 timeZone: 'Asia/Kolkata',
-                weekday: 'short',
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: true
+                year: 'numeric', month: 'long', day: 'numeric',
+                hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
             };
             
-            timeDisplay.innerText = "Current Time: " + now.toLocaleString('en-IN', options) + " (IST)";
+            timeDisplay.innerText = now.toLocaleString('en-IN', options) + " (IST)";
             document.getElementById('current-year').innerText = new Intl.DateTimeFormat('en-IN', { timeZone: 'Asia/Kolkata', year: 'numeric' }).format(now);
         }
         
@@ -747,4 +575,3 @@
     </script>
 </body>
 </html>
-
