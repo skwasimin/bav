@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batikar Abhedananda Vidyapith (BAV)</title>
+    <!-- Placeholder for future favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+    <style>
+        /* CSS Styling */
+        :root {
+            --saffron: #FF671F; /* Deep Saffron */
+            --saffron-dark: #cc5218;
+            --light-bg: #FFF5EE;
+            --dark-text: #333;
+            --white: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: var(--saffron);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffe6d5;
+        }
+
+        /* Settings Dropdown */
+        .settings-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: var(--white);
+            color: var(--saffron);
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: var(--white);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .dropdown-content button {
+            color: var(--dark-text);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            border: none;
+            background: none;
+            text-align: left;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dropdown-content button:hover {
+            background-color: #f1f1f1;
+        }
+
+        .settings-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Sections General */
+        section {
+            padding: 100px 10%;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1, h2 {
+            color: var(--saffron);
+            margin-bottom: 20px;
+        }
+
+        /* Home Section */
+        #home {
+            background: linear-gradient(rgba(255, 103, 31, 0.1), rgba(255, 103, 31, 0.1));
+            text-align: center;
+            border-bottom: 4px solid var(--saffron);
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        /* Content Text */
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* Notice Board */
+        .notice-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .notice-plate {
+            background: var(--white);
+            border-left: 6px solid var(--saffron);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .notice-plate:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .notice-date {
+            font-weight: bold;
+            color: var(--saffron-dark);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .notice-content h3 {
+            margin: 0;
+            color: var(--dark-text);
+        }
+
+        .notice-link {
+            background-color: var(--saffron);
+            color: var(--white);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .notice-link:hover {
+            background-color: var(--saffron-dark);
+        }
+
+        /* Language Utility Classes */
+        .lang-bn {
+            display: none; /* Bengali hidden by default */
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--saffron);
+            color: var(--white);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#home" class="logo">BAV</a>
+        <div class="nav-links">
+            <a href="#home" class="lang-en">Home</a>
+            <a href="#home" class="lang-bn">হোম</a>
+            
+            <a href="#about" class="lang-en">About</a>
+            <a href="#about" class="lang-bn">আমাদের সম্পর্কে</a>
+            
+            <a href="#vision" class="lang-en">Vision</a>
+            <a href="#vision" class="lang-bn">ভিশন</a>
+            
+            <a href="#cs-club" class="lang-en">CS Club</a>
+            <a href="#cs-club" class="lang-bn">সিএস ক্লাব</a>
+            
+            <a href="#notice" class="lang-en">Notice</a>
+            <a href="#notice" class="lang-bn">নোটিশ</a>
+
+            <div class="settings-dropdown">
+                <button class="dropbtn">Settings ⚙️</button>
+                <div class="dropdown-content">
+                    <button onclick="toggleLanguage()">🌐 Language: EN / BN</button>
+                    <button onclick="customRefresh()">🔄 Refresh Page</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <h1 class="hero-title lang-en">Batikar Abhedananda Vidyapith</h1>
+        <h1 class="hero-title lang-bn">বটিকর অভেদানন্দ বিদ্যাপীঠ</h1>
+        
+        <p class="hero-subtitle lang-en">Awake, Arise, and Stop Not Till the Goal is Reached.</p>
+        <p class="hero-subtitle lang-bn">উত্তিষ্ঠত জাগ্রত প্রাপ্য বরান্নিবোধত।</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="lang-en">About BAV</h2>
+        <h2 class="lang-bn">আমাদের সম্পর্কে</h2>
+        
+        <p class="lang-en">Batikar Abhedananda Vidyapith (BAV), situated in the historic village of Batikar, Birbhum, is a premier educational institution deeply rooted in the ideological heritage of Swami Vivekananda and Swami Abhedananda. Our school stands as a beacon of knowledge, striving to provide man-making and character-building education to the youth of Bengal.</p>
+        
+        <p class="lang-bn">বটিকর অভেদানন্দ বিদ্যাপীঠ (BAV) বীরভূম জেলার বটিকর গ্রামে অবস্থিত একটি ঐতিহ্যবাহী শিক্ষাপ্রতিষ্ঠান। স্বামী বিবেকানন্দ এবং স্বামী অভেদানন্দের মহান আদর্শে অনুপ্রাণিত হয়ে এই বিদ্যালয়টি শিক্ষার্থীদের চরিত্র গঠন এবং আদর্শ মানুষ গড়ার লক্ষ্যে নিরলস কাজ করে চলেছে।</p>
+    </section>
+
+    <!-- Vision Section -->
+    <section id="vision">
+        <h2 class="lang-en">Our Vision</h2>
+        <h2 class="lang-bn">আমাদের ভিশন</h2>
+        
+        <p class="lang-en">We envision an educational ecosystem where traditional cultural values blend seamlessly with modern scientific temper. Our core objective is to nurture intellect, promote physical strength, and instill an unbreakable moral compass in our students.</p>
+        
+        <p class="lang-bn">আমাদের লক্ষ্য হলো এমন এক শিক্ষাব্যবস্থা গড়ে তোলা যেখানে ঐতিহ্যবাহী সাংস্কৃতিক মূল্যবোধের সাথে আধুনিক বিজ্ঞানমনস্কতার মেলবন্ধন ঘটবে। শিক্ষার্থীদের মেধার বিকাশ, শারীরিক সক্ষমতা বৃদ্ধি এবং নৈতিক মূল্যবোধ জাগ্রত করাই আমাদের প্রধান উদ্দেশ্য।</p>
+    </section>
+
+    <!-- CS Club Section -->
+    <section id="cs-club">
+        <h2 class="lang-en">Computer Science (CS) Club</h2>
+        <h2 class="lang-bn">কম্পিউটার সায়েন্স (CS) ক্লাব</h2>
+        
+        <p class="lang-en" style="font-weight: bold; color: var(--saffron-dark);">🚀 Built newly on 1st September, 2026!</p>
+        <p class="lang-bn" style="font-weight: bold; color: var(--saffron-dark);">🚀 ১লা সেপ্টেম্বর, ২০২৬ তারিখে নতুনভাবে প্রতিষ্ঠিত!</p>
+        
+        <p class="lang-en">The BAV CS Club is a brand-new initiative aimed at preparing our students for the digital future. We focus on coding, logical reasoning, and modern technological skills to ensure our students excel in the global tech landscape.</p>
+        <p class="lang-bn">BAV সিএস ক্লাব হলো আমাদের শিক্ষার্থীদের ডিজিটাল ভবিষ্যতের জন্য প্রস্তুত করার একটি নতুন উদ্যোগ। শিক্ষার্থীদের কোডিং, যুক্তিমূলক চিন্তাভাবনা এবং আধুনিক প্রযুক্তিগত দক্ষতা বৃদ্ধিতে আমরা বিশেষ গুরুত্ব প্রদান করি।</p>
+    </section>
+
+    <!-- Notice Section -->
+    <section id="notice">
+        <h2 class="lang-en">Notice Board</h2>
+        <h2 class="lang-bn">নোটিশ বোর্ড</h2>
+        
+        <div class="notice-container" id="notice-board-area">
+            
+            <!-- Notice Plate 1 -->
+            <div class="notice-plate">
+                <div class="notice-content">
+                    <div class="notice-date">September 1, 2026</div>
+                    <h3 class="lang-en">Establishment of the New CS Club</h3>
+                    <h3 class="lang-bn">নতুন সিএস ক্লাব প্রতিষ্ঠা</h3>
+                    <p class="lang-en" style="font-size: 0.9rem; margin-top: 5px; color: #666;">Read the official guidelines and registration details.</p>
+                    <p class="lang-bn" style="font-size: 0.9rem; margin-top: 5px; color: #666;">অফিসিয়াল নির্দেশিকা এবং নিবন্ধনের বিবরণ পড়ুন।</p>
+                </div>
+                <div class="notice-action">
+                    <!-- Replace href with your Google Drive / PDF / Doc link -->
+                    <a href="#" target="_blank" class="notice-link lang-en">View PDF</a>
+                    <a href="#" target="_blank" class="notice-link lang-bn">পিডিএফ দেখুন</a>
+                </div>
+            </div>
+
+            <!-- Future Notice Plates can be copied and pasted right here -->
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Batikar Abhedananda Vidyapith (BAV). All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Functionality -->
+    <script>
+        // Track current language (default English)
+        let currentLang = 'en';
+
+        // Function to toggle between English and Bengali
+        function toggleLanguage() {
+            const enElements = document.querySelectorAll('.lang-en');
+            const bnElements = document.querySelectorAll('.lang-bn');
+
+            if (currentLang === 'en') {
+                // Switch to Bengali
+                enElements.forEach(el => el.style.display = 'none');
+                bnElements.forEach(el => el.style.display = 'block');
+                currentLang = 'bn';
+            } else {
+                // Switch to English
+                bnElements.forEach(el => el.style.display = 'none');
+                enElements.forEach(el => el.style.display = 'block');
+                currentLang = 'en';
+            }
+        }
+
+        // Custom Refresh Function
+        function customRefresh() {
+            // Refreshes the page ignoring cache
+            window.location.reload(true);
+        }
+    </script>
+</body>
+</html>
