@@ -9,14 +9,14 @@
     
     <style>
         /* =========================================================
-        CORE VARIABLES (Change these to alter the whole site)
+        CORE VARIABLES
         ========================================================= 
         */
         :root {
             --saffron-deep: #B83A14; 
             --saffron-hover: #8A2B0E;
             --academic-dark: #2C3E50;
-            --academic-light: #FDFBF7; /* Paper cream */
+            --academic-light: #FDFBF7; 
             --white: #ffffff;
             --border-soft: #E5E0D8;
             --text-muted: #596A7A;
@@ -25,7 +25,6 @@
             --transition-slow: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
-        /* RESET & BASE TYPOGRAPHY */
         * {
             margin: 0;
             padding: 0;
@@ -55,7 +54,9 @@
             color: var(--text-muted);
         }
 
-        /* TOP BAR */
+        /* =========================================================
+        TOP BAR & NAVIGATION (Upgraded with Top Links)
+        ========================================================= */
         .top-bar {
             background-color: var(--white);
             color: var(--academic-dark);
@@ -72,12 +73,41 @@
             transition: var(--transition-slow);
         }
 
+        .top-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
         .logo {
             font-family: 'Georgia', serif;
             font-size: 1.5rem;
             font-weight: bold;
             color: var(--saffron-deep);
             letter-spacing: 1px;
+        }
+
+        /* The New Outside Links */
+        .top-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .top-link {
+            text-decoration: none;
+            color: var(--academic-dark);
+            font-family: 'Georgia', serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition-slow);
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .top-link:hover, .top-link.active {
+            color: var(--saffron-deep);
+            border-bottom: 2px solid var(--saffron-deep);
         }
 
         .hamburger {
@@ -99,7 +129,9 @@
             transition: var(--transition-slow);
         }
 
-        /* SIDEBAR & OVERLAY */
+        /* =========================================================
+        SIDEBAR & OVERLAY
+        ========================================================= */
         .sidebar-overlay {
             position: fixed;
             top: 0;
@@ -178,7 +210,7 @@
             padding-left: 46px;
         }
 
-        /* SETTINGS AREA */
+        /* Settings Area */
         .sidebar-settings {
             margin-top: auto;
             padding: 40px;
@@ -220,9 +252,8 @@
         }
 
         /* =========================================================
-        MAINTAINABLE CONTENT BLOCKS (Use these classes everywhere)
-        ========================================================= 
-        */
+        CONTENT BLOCKS
+        ========================================================= */
         
         .page-content {
             flex-grow: 1;
@@ -240,7 +271,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Standard Page Heading */
         .page-title {
             font-size: 2.8rem;
             margin-bottom: 30px;
@@ -249,7 +279,6 @@
             display: inline-block;
         }
 
-        /* Standard White Content Box */
         .content-block {
             background: var(--white);
             padding: 60px 50px;
@@ -259,7 +288,6 @@
             border-top: 1px solid var(--border-soft);
         }
 
-        /* Auto-sizing Grid for Cards */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -268,7 +296,6 @@
             margin-bottom: 50px;
         }
 
-        /* Hoverable Information Card */
         .info-card {
             background: var(--white);
             padding: 40px 30px;
@@ -307,27 +334,6 @@
             line-height: 1.6;
         }
 
-        /* Quote / Message Block (Kept in CSS just in case you ever want to use it on another page) */
-        .quote-block {
-            background: var(--white);
-            padding: 50px;
-            border-left: 6px solid var(--saffron-deep);
-            box-shadow: var(--shadow-soft);
-            margin-bottom: 40px;
-            font-style: italic;
-            position: relative;
-        }
-        
-        .quote-author {
-            display: block;
-            margin-top: 20px;
-            font-style: normal;
-            font-family: 'Georgia', serif;
-            font-weight: bold;
-            color: var(--academic-dark);
-        }
-
-        /* Bulleted Information Lists */
         .info-list {
             list-style: none;
             padding: 0;
@@ -348,7 +354,6 @@
             font-family: 'Georgia', serif;
         }
 
-        /* Notice Board System */
         .notice-plate {
             display: flex;
             justify-content: space-between;
@@ -380,7 +385,14 @@
             margin-bottom: 5px;
         }
 
-        /* Universal Button */
+        /* Buttons */
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
         .btn-link {
             background-color: var(--academic-dark);
             color: var(--white);
@@ -397,6 +409,13 @@
 
         .btn-link:hover {
             background-color: var(--saffron-deep);
+        }
+
+        .btn-primary {
+            background-color: var(--saffron-deep);
+        }
+        .btn-primary:hover {
+            background-color: var(--saffron-hover);
         }
 
         /* FOOTER */
@@ -419,12 +438,20 @@
         svg { width: 18px; height: 18px; fill: currentColor; }
 
         /* RESPONSIVE DESIGN */
-        @media (max-width: 768px) {
+        @media (max-width: 850px) {
+            .top-bar-left { gap: 20px; }
+            .top-links { gap: 15px; }
+            .top-link { font-size: 0.95rem; }
+        }
+        
+        @media (max-width: 650px) {
+            .top-bar-left { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .top-bar { padding: 15px 25px; }
+            .page-content { padding-top: 140px; } /* extra padding for taller top bar */
             .page-title { font-size: 2rem; }
-            .content-block, .quote-block { padding: 40px 20px; }
+            .content-block { padding: 40px 20px; }
             .notice-plate { flex-direction: column; align-items: flex-start; gap: 20px; }
             .sidebar { width: 85vw; right: -85vw; }
-            .top-bar { padding: 15px 20px; }
             .grid-container { grid-template-columns: 1fr; }
         }
     </style>
@@ -446,7 +473,20 @@
 
     <!-- TOP NAVIGATION -->
     <div class="top-bar">
-        <div class="logo">BAV</div>
+        <div class="top-bar-left">
+            <div class="logo">BAV</div>
+            <!-- Outside Menu Links -->
+            <div class="top-links">
+                <a href="#admissions" class="top-link">
+                    <span class="lang-en">Admissions</span>
+                    <span class="lang-bn">ভর্তি</span>
+                </a>
+                <a href="#recruitment" class="top-link">
+                    <span class="lang-en">Recruitment</span>
+                    <span class="lang-bn">নিয়োগ</span>
+                </a>
+            </div>
+        </div>
         <button class="hamburger" id="menu-btn" onclick="toggleMenu()" aria-label="Toggle Menu">
             <span></span>
             <span></span>
@@ -463,7 +503,6 @@
             </button>
         </div>
         
-        <!-- HOW TO ADD A NEW MENU ITEM: Copy one of these pairs and change the href="#NAME" -->
         <a href="#home" class="menu-link lang-en">Home</a>
         <a href="#home" class="menu-link lang-bn">হোম</a>
         
@@ -500,25 +539,20 @@
 
     <!-- 
     =========================================================
-    START OF PAGES (Controlled by JavaScript Hash Routing)
+    START OF PAGES
     ========================================================= 
     -->
 
     <!-- 1. HOME PAGE -->
     <div id="home" class="page-content">
-        
-        <!-- Welcome Block -->
         <div class="content-block" style="text-align: center;">
             <h1 class="page-title lang-en">Batikar Abhedananda Vidyapith</h1>
             <h1 class="page-title lang-bn">বাতিকার অভেদানন্দ বিদ্যাপীঠ</h1>
-            
             <p class="lang-en" style="max-width: 750px; margin: 0 auto;">Batikar Abhedananda Vidyapith is a traditional and well-known educational institution in the Birbhum district of West Bengal, dedicated to the enlightenment of rural youth.</p>
             <p class="lang-bn" style="max-width: 750px; margin: 0 auto;">বাতিকার অভেদানন্দ বিদ্যাপীঠ পশ্চিমবঙ্গের বীরভূম জেলার একটি ঐতিহ্যবাহী ও পরিচিত শিক্ষাপ্রতিষ্ঠান, যা গ্রামীণ যুবকদের আলোকিত করার জন্য নিবেদিত।</p>
         </div>
 
-        <!-- Information Grid (Perfectly Aligned 2x2 Layout) -->
         <div class="grid-container">
-            
             <div class="info-card">
                 <svg class="card-icon"><use href="#icon-heritage"></use></svg>
                 <h3 class="lang-en">Rich Heritage</h3>
@@ -550,18 +584,62 @@
                 <p class="lang-en">Holding our head high in rural Birbhum and carrying a glorious legacy forward.</p>
                 <p class="lang-bn">বীরভূমের গ্রামীণ পরিবেশে মাথা উঁচু করে গৌরবময় ঐতিহ্যকে এগিয়ে নিয়ে যাওয়া।</p>
             </div>
-
         </div>
     </div>
 
+    <!-- NEW PAGE: ADMISSIONS -->
+    <div id="admissions" class="page-content">
+        <h1 class="page-title lang-en">Admissions</h1>
+        <h1 class="page-title lang-bn">ভর্তি প্রক্রিয়া</h1>
+        
+        <div class="content-block">
+            <p class="lang-en">Information regarding the admission process, eligibility criteria, and important dates will be regularly updated here. Click below to view the latest admission guidelines.</p>
+            <p class="lang-bn">ভর্তি প্রক্রিয়া, যোগ্যতার মানদণ্ড এবং গুরুত্বপূর্ণ তারিখ সংক্রান্ত তথ্য নিয়মিত এখানে আপডেট করা হবে। সর্বশেষ ভর্তির নির্দেশিকা দেখতে নিচে ক্লিক করুন।</p>
+            
+            <div class="btn-container">
+                <!-- Replace '#' with your actual Admission PDF link -->
+                <a href="#" target="_blank" class="btn-link">
+                    <svg><use href="#icon-link"></use></svg>
+                    <span class="lang-en">View Document</span>
+                    <span class="lang-bn">নথি দেখুন</span>
+                </a>
+            </div>
+        </div>
+    </div>
 
-    <!-- 2. ABOUT PAGE -->
+    <!-- NEW PAGE: RECRUITMENT -->
+    <div id="recruitment" class="page-content">
+        <h1 class="page-title lang-en">Recruitment</h1>
+        <h1 class="page-title lang-bn">নিয়োগ</h1>
+        
+        <div class="content-block">
+            <p class="lang-en">Join our esteemed institution. Details for current job openings for teaching and non-teaching staff are provided below. Read the guidelines document carefully before submitting your application via the Google Form.</p>
+            <p class="lang-bn">আমাদের স্বনামধন্য প্রতিষ্ঠানে যোগ দিন। শিক্ষক এবং অশিক্ষক কর্মীদের জন্য বর্তমান চাকরির শূন্যপদের বিস্তারিত তথ্য নিচে দেওয়া হলো। গুগল ফর্মের মাধ্যমে আপনার আবেদন জমা দেওয়ার আগে নির্দেশিকা নথিটি সাবধানে পড়ুন।</p>
+            
+            <div class="btn-container">
+                <!-- Replace '#' with your Guideline PDF link -->
+                <a href="#" target="_blank" class="btn-link">
+                    <svg><use href="#icon-link"></use></svg>
+                    <span class="lang-en">View Document</span>
+                    <span class="lang-bn">নথি দেখুন</span>
+                </a>
+                
+                <!-- Replace '#' with your Google Form link -->
+                <a href="#" target="_blank" class="btn-link btn-primary">
+                    <svg><use href="#icon-link"></use></svg>
+                    <span class="lang-en">Apply (Google Form)</span>
+                    <span class="lang-bn">আবেদন করুন (গুগল ফর্ম)</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT PAGE -->
     <div id="about" class="page-content">
         <h1 class="page-title lang-en">Brief Overview</h1>
         <h1 class="page-title lang-bn">সংক্ষিপ্ত বিবরণ</h1>
         
         <div class="content-block">
-            <!-- HOW TO ADD TEXT: Copy and paste paragraph tags below -->
             <ul class="info-list lang-en">
                 <li><strong>Establishment:</strong> Founded in 1958 by the Batikar Sree Sree Ramkrishna Ashram.</li>
                 <li><strong>Mission:</strong> To advance education for rural communities, with a special focus on girls and the underprivileged.</li>
@@ -576,8 +654,7 @@
         </div>
     </div>
 
-
-    <!-- 3. VISION PAGE -->
+    <!-- VISION PAGE -->
     <div id="vision" class="page-content">
         <h1 class="page-title lang-en">Our Vision</h1>
         <h1 class="page-title lang-bn">আমাদের ভিশন</h1>
@@ -588,8 +665,7 @@
         </div>
     </div>
 
-
-    <!-- 4. CS CLUB PAGE -->
+    <!-- CS CLUB PAGE -->
     <div id="cs-club" class="page-content">
         <h1 class="page-title lang-en">Computer Science Club</h1>
         <h1 class="page-title lang-bn">কম্পিউটার সায়েন্স ক্লাব</h1>
@@ -603,14 +679,12 @@
         </div>
     </div>
 
-
-    <!-- 5. NOTICE BOARD PAGE -->
+    <!-- NOTICE BOARD PAGE -->
     <div id="notice" class="page-content">
         <h1 class="page-title lang-en">Notice Board</h1>
         <h1 class="page-title lang-bn">নোটিশ বোর্ড</h1>
         
         <div id="notice-container">
-            <!-- HOW TO ADD A NEW NOTICE: Copy the <div class="notice-plate"> block below, and paste it directly above the older one. -->
             <div class="notice-plate">
                 <div class="notice-content">
                     <div class="notice-date">September 1, 2026</div>
@@ -619,19 +693,16 @@
                     <p class="lang-en" style="margin:0; font-size: 0.95rem;">Download the registration guidelines and requirements.</p>
                     <p class="lang-bn" style="margin:0; font-size: 0.95rem;">নিবন্ধন নির্দেশিকা এবং প্রয়োজনীয়তা ডাউনলোড করুন।</p>
                 </div>
-                <!-- To add a PDF or Doc link, replace the '#' below with your URL -->
                 <a href="#" target="_blank" class="btn-link">
                     <svg><use href="#icon-link"></use></svg>
                     <span class="lang-en">View Document</span>
                     <span class="lang-bn">নথি দেখুন</span>
                 </a>
             </div>
-            <!-- End Notice Plate -->
         </div>
     </div>
 
-
-    <!-- 6. UPCOMING PROJECTS PAGE -->
+    <!-- UPCOMING PROJECTS PAGE -->
     <div id="projects" class="page-content">
         <h1 class="page-title lang-en">Upcoming Projects</h1>
         <h1 class="page-title lang-bn">আসন্ন প্রকল্পসমূহ</h1>
@@ -650,7 +721,7 @@
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
-        /* HASH ROUTING (Handles page switching) */
+        /* HASH ROUTING */
         function handleRouting() {
             let hash = window.location.hash.substring(1) || 'home';
             
@@ -659,7 +730,8 @@
                 page.style.animation = 'none';
             });
             
-            document.querySelectorAll('.menu-link').forEach(link => link.classList.remove('active'));
+            // Clear active states on sidebar AND top links
+            document.querySelectorAll('.menu-link, .top-link').forEach(link => link.classList.remove('active'));
             
             const target = document.getElementById(hash);
             if (target) {
@@ -667,9 +739,9 @@
                 void target.offsetWidth; // Trigger reflow for animation
                 target.style.animation = 'elegantFade 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards';
                 
-                document.querySelectorAll(`.menu-link[href="#${hash}"]`).forEach(link => link.classList.add('active'));
+                // Add active class back to matching links
+                document.querySelectorAll(`.menu-link[href="#${hash}"], .top-link[href="#${hash}"]`).forEach(link => link.classList.add('active'));
             } else {
-                // Fallback to home if page doesn't exist
                 document.getElementById('home').style.display = 'block';
             }
             
