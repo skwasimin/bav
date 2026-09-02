@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Batikar Abhedananda Vidyapith</title>
-    <!-- HOW TO ADD FAVICON: Just ensure your logo image is named 'favicon.png' and is in the same folder as this file -->
+    <!-- HOW TO ADD FAVICON: Ensure your logo image is named 'favicon.png' and is in the same folder -->
     <link rel="icon" type="image/png" href="favicon.png">
     
     <style>
         /* =========================================================
         CORE VARIABLES
-        ========================================================= 
-        */
+        ========================================================= */
         :root {
             --saffron-deep: #B83A14; 
             --saffron-hover: #8A2B0E;
@@ -55,7 +54,7 @@
         }
 
         /* =========================================================
-        TOP BAR & NAVIGATION (Upgraded with Top Links)
+        TOP BAR & NAVIGATION
         ========================================================= */
         .top-bar {
             background-color: var(--white);
@@ -87,7 +86,6 @@
             letter-spacing: 1px;
         }
 
-        /* The New Outside Links */
         .top-links {
             display: flex;
             gap: 25px;
@@ -252,7 +250,7 @@
         }
 
         /* =========================================================
-        CONTENT BLOCKS
+        CONTENT BLOCKS & IMAGES
         ========================================================= */
         
         .page-content {
@@ -286,6 +284,48 @@
             box-shadow: var(--shadow-soft);
             margin-bottom: 40px;
             border-top: 1px solid var(--border-soft);
+        }
+
+        /* Full Width Parallax Image Banners */
+        .image-banner {
+            width: 100%;
+            height: 450px;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            margin: 50px 0;
+            border-radius: 2px;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Dark Slate Overlay for Readability */
+        .image-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(44, 62, 80, 0.65); 
+            border-radius: 2px;
+        }
+
+        .banner-text {
+            position: relative;
+            z-index: 1;
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            max-width: 800px;
+        }
+
+        .banner-text h2 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .grid-container {
@@ -354,11 +394,12 @@
             font-family: 'Georgia', serif;
         }
 
+        /* Universal Notice Plate (Used in Notice, Admissions, Recruitment) */
         .notice-plate {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 30px;
+            padding: 30px 40px;
             background: var(--white);
             border-left: 4px solid var(--saffron-deep);
             box-shadow: var(--shadow-soft);
@@ -371,6 +412,11 @@
             transform: translateX(5px);
         }
 
+        .notice-content {
+            flex-grow: 1;
+            padding-right: 20px;
+        }
+
         .notice-date {
             font-family: 'Georgia', serif;
             color: var(--saffron-deep);
@@ -380,17 +426,18 @@
         }
 
         .notice-title {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             color: var(--academic-dark);
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
 
-        /* Buttons */
-        .btn-container {
+        /* Buttons & Actions inside plates */
+        .notice-actions {
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
-            margin-top: 15px;
+            align-items: center;
+            flex-shrink: 0;
         }
 
         .btn-link {
@@ -447,12 +494,15 @@
         @media (max-width: 650px) {
             .top-bar-left { flex-direction: column; align-items: flex-start; gap: 8px; }
             .top-bar { padding: 15px 25px; }
-            .page-content { padding-top: 140px; } /* extra padding for taller top bar */
+            .page-content { padding-top: 140px; }
             .page-title { font-size: 2rem; }
             .content-block { padding: 40px 20px; }
-            .notice-plate { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .notice-plate { flex-direction: column; align-items: flex-start; gap: 20px; padding: 25px 20px; }
+            .notice-actions { justify-content: flex-start; margin-top: 10px; width: 100%; }
             .sidebar { width: 85vw; right: -85vw; }
             .grid-container { grid-template-columns: 1fr; }
+            .image-banner { height: 350px; }
+            .banner-text h2 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -552,6 +602,16 @@
             <p class="lang-bn" style="max-width: 750px; margin: 0 auto;">বাতিকার অভেদানন্দ বিদ্যাপীঠ পশ্চিমবঙ্গের বীরভূম জেলার একটি ঐতিহ্যবাহী ও পরিচিত শিক্ষাপ্রতিষ্ঠান, যা গ্রামীণ যুবকদের আলোকিত করার জন্য নিবেদিত।</p>
         </div>
 
+        <!-- IMAGE BANNER 1: FLAG HOISTING -->
+        <div class="image-banner" style="background-image: url('1000125633.jpg');">
+            <div class="banner-text">
+                <h2 class="lang-en">Celebrating Our Heritage</h2>
+                <h2 class="lang-bn">আমাদের ঐতিহ্য উদযাপন</h2>
+                <p class="lang-en" style="color: var(--academic-light); margin-bottom: 0;">Fostering patriotism and discipline in the hearts of our students.</p>
+                <p class="lang-bn" style="color: var(--academic-light); margin-bottom: 0;">আমাদের শিক্ষার্থীদের হৃদয়ে দেশপ্রেম এবং শৃঙ্খলা গড়ে তোলা।</p>
+            </div>
+        </div>
+
         <div class="grid-container">
             <div class="info-card">
                 <svg class="card-icon"><use href="#icon-heritage"></use></svg>
@@ -585,52 +645,74 @@
                 <p class="lang-bn">বীরভূমের গ্রামীণ পরিবেশে মাথা উঁচু করে গৌরবময় ঐতিহ্যকে এগিয়ে নিয়ে যাওয়া।</p>
             </div>
         </div>
-    </div>
 
-    <!-- NEW PAGE: ADMISSIONS -->
-    <div id="admissions" class="page-content">
-        <h1 class="page-title lang-en">Admissions</h1>
-        <h1 class="page-title lang-bn">ভর্তি প্রক্রিয়া</h1>
-        
-        <div class="content-block">
-            <p class="lang-en">Information regarding the admission process, eligibility criteria, and important dates will be regularly updated here. Click below to view the latest admission guidelines.</p>
-            <p class="lang-bn">ভর্তি প্রক্রিয়া, যোগ্যতার মানদণ্ড এবং গুরুত্বপূর্ণ তারিখ সংক্রান্ত তথ্য নিয়মিত এখানে আপডেট করা হবে। সর্বশেষ ভর্তির নির্দেশিকা দেখতে নিচে ক্লিক করুন।</p>
-            
-            <div class="btn-container">
-                <!-- Replace '#' with your actual Admission PDF link -->
-                <a href="#" target="_blank" class="btn-link">
-                    <svg><use href="#icon-link"></use></svg>
-                    <span class="lang-en">View Document</span>
-                    <span class="lang-bn">নথি দেখুন</span>
-                </a>
+        <!-- IMAGE BANNER 2: STAFF/TEACHERS -->
+        <div class="image-banner" style="background-image: url('1000125644.jpg'); margin-top: 0;">
+            <div class="banner-text">
+                <h2 class="lang-en">Our Dedicated Faculty</h2>
+                <h2 class="lang-bn">আমাদের নিবেদিত শিক্ষকগণ</h2>
+                <p class="lang-en" style="color: var(--academic-light); margin-bottom: 0;">The pillars of our institution, guiding the future generations.</p>
+                <p class="lang-bn" style="color: var(--academic-light); margin-bottom: 0;">আমাদের প্রতিষ্ঠানের স্তম্ভ, যারা ভবিষ্যৎ প্রজন্মকে পথ দেখাচ্ছেন।</p>
             </div>
         </div>
     </div>
 
-    <!-- NEW PAGE: RECRUITMENT -->
+    <!-- NEW PAGE: ADMISSIONS (Structured like Notice Board) -->
+    <div id="admissions" class="page-content">
+        <h1 class="page-title lang-en">Admissions</h1>
+        <h1 class="page-title lang-bn">ভর্তি প্রক্রিয়া</h1>
+        
+        <div id="admissions-container">
+            <!-- Admission Plate -->
+            <div class="notice-plate">
+                <div class="notice-content">
+                    <div class="notice-date">September 2, 2026</div>
+                    <h3 class="notice-title lang-en">Admission Guidelines for Academic Session</h3>
+                    <h3 class="notice-title lang-bn">শিক্ষাবর্ষের জন্য ভর্তির নির্দেশিকা</h3>
+                    <p class="lang-en" style="margin:0; font-size: 0.95rem;">Review the eligibility criteria, fee structures, and important dates for the upcoming session.</p>
+                    <p class="lang-bn" style="margin:0; font-size: 0.95rem;">আসন্ন সেশনের জন্য যোগ্যতার মানদণ্ড, ফি কাঠামো এবং গুরুত্বপূর্ণ তারিখগুলি পর্যালোচনা করুন।</p>
+                </div>
+                <div class="notice-actions">
+                    <a href="#" target="_blank" class="btn-link">
+                        <svg><use href="#icon-link"></use></svg>
+                        <span class="lang-en">View Document</span>
+                        <span class="lang-bn">নথি দেখুন</span>
+                    </a>
+                </div>
+            </div>
+            <!-- Future admission plates can be copied and pasted above this line -->
+        </div>
+    </div>
+
+    <!-- NEW PAGE: RECRUITMENT (Structured like Notice Board) -->
     <div id="recruitment" class="page-content">
         <h1 class="page-title lang-en">Recruitment</h1>
         <h1 class="page-title lang-bn">নিয়োগ</h1>
         
-        <div class="content-block">
-            <p class="lang-en">Join our esteemed institution. Details for current job openings for teaching and non-teaching staff are provided below. Read the guidelines document carefully before submitting your application via the Google Form.</p>
-            <p class="lang-bn">আমাদের স্বনামধন্য প্রতিষ্ঠানে যোগ দিন। শিক্ষক এবং অশিক্ষক কর্মীদের জন্য বর্তমান চাকরির শূন্যপদের বিস্তারিত তথ্য নিচে দেওয়া হলো। গুগল ফর্মের মাধ্যমে আপনার আবেদন জমা দেওয়ার আগে নির্দেশিকা নথিটি সাবধানে পড়ুন।</p>
-            
-            <div class="btn-container">
-                <!-- Replace '#' with your Guideline PDF link -->
-                <a href="#" target="_blank" class="btn-link">
-                    <svg><use href="#icon-link"></use></svg>
-                    <span class="lang-en">View Document</span>
-                    <span class="lang-bn">নথি দেখুন</span>
-                </a>
-                
-                <!-- Replace '#' with your Google Form link -->
-                <a href="#" target="_blank" class="btn-link btn-primary">
-                    <svg><use href="#icon-link"></use></svg>
-                    <span class="lang-en">Apply (Google Form)</span>
-                    <span class="lang-bn">আবেদন করুন (গুগল ফর্ম)</span>
-                </a>
+        <div id="recruitment-container">
+            <!-- Recruitment Plate -->
+            <div class="notice-plate">
+                <div class="notice-content">
+                    <div class="notice-date">September 2, 2026</div>
+                    <h3 class="notice-title lang-en">Teaching Staff Vacancies (Science Faculty)</h3>
+                    <h3 class="notice-title lang-bn">শিক্ষক নিয়োগ (বিজ্ঞান অনুষদ)</h3>
+                    <p class="lang-en" style="margin:0; font-size: 0.95rem;">Applications are invited for teaching positions. Read the guidelines carefully before submitting your application via the Google Form.</p>
+                    <p class="lang-bn" style="margin:0; font-size: 0.95rem;">শিক্ষক পদের জন্য আবেদন আহ্বান করা হচ্ছে। গুগল ফর্মের মাধ্যমে আবেদন করার আগে নির্দেশিকা সাবধানে পড়ুন।</p>
+                </div>
+                <div class="notice-actions">
+                    <a href="#" target="_blank" class="btn-link">
+                        <svg><use href="#icon-link"></use></svg>
+                        <span class="lang-en">View Document</span>
+                        <span class="lang-bn">নথি দেখুন</span>
+                    </a>
+                    <a href="#" target="_blank" class="btn-link btn-primary">
+                        <svg><use href="#icon-link"></use></svg>
+                        <span class="lang-en">Apply (Form)</span>
+                        <span class="lang-bn">আবেদন (ফর্ম)</span>
+                    </a>
+                </div>
             </div>
+            <!-- Future recruitment plates can be copied and pasted above this line -->
         </div>
     </div>
 
@@ -693,11 +775,13 @@
                     <p class="lang-en" style="margin:0; font-size: 0.95rem;">Download the registration guidelines and requirements.</p>
                     <p class="lang-bn" style="margin:0; font-size: 0.95rem;">নিবন্ধন নির্দেশিকা এবং প্রয়োজনীয়তা ডাউনলোড করুন।</p>
                 </div>
-                <a href="#" target="_blank" class="btn-link">
-                    <svg><use href="#icon-link"></use></svg>
-                    <span class="lang-en">View Document</span>
-                    <span class="lang-bn">নথি দেখুন</span>
-                </a>
+                <div class="notice-actions">
+                    <a href="#" target="_blank" class="btn-link">
+                        <svg><use href="#icon-link"></use></svg>
+                        <span class="lang-en">View Document</span>
+                        <span class="lang-bn">নথি দেখুন</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
